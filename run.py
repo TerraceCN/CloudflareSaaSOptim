@@ -4,7 +4,7 @@ from functools import cache
 
 from loguru import logger
 
-from config import config
+from config import CONFIG_CLOUDFLARE_ST, CONFIG_DNS_PROVIDER, CONFIG_DNS
 from dns_provider import BaseDnsProvider, DNS_PROVIDER
 
 
@@ -26,8 +26,7 @@ def get_dns_provider(provider: str) -> BaseDnsProvider:
     if provider not in DNS_PROVIDER:
         raise KeyError(f"不支持的DNS服务商: {provider}")
 
-    dns_provider_configs: dict[str, dict] = config.get("dns_provider", {})
-    dns_provider_config = dns_provider_configs.get(provider, {})
+    dns_provider_config = CONFIG_DNS_PROVIDER.get(provider, {})
     dns_provider = DNS_PROVIDER[provider](dns_provider_config)
     return dns_provider
 
@@ -43,8 +42,7 @@ def set_dns_record(dns_provider: BaseDnsProvider, dns: dict, ip: str):
 
 
 def main():
-    cloudflare_speed_test_config = config.get("cloudflare_speed_test_config", {})
-    result_file = cloudflare_speed_test_config.get("result_file", "result.csv")
+    result_file = CONFIG_CLOUDFLARE_ST.get("result_file", "result.csv")
     results = read_cloudflare_st_result(result_file)
 
     if len(results) == 0:
@@ -56,7 +54,7 @@ def main():
     )
 
     dns: dict
-    for dns in config.get("dns", []):
+    for dns in CONFIG_DNS:
         if "provider" not in dns:
             logger.error(f"未指定DNS服务商: {dns}")
             continue

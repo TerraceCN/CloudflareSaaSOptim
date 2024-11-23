@@ -14,7 +14,7 @@ Cloudflare 回源优选IP自动更新脚本
 以下是一个简单的配置文件示例, 使用阿里云DNS:
 
 ```toml
-[cloudflare_speed_test]
+[cloudflare_st]
 result_file = "result.csv"
 
 [dns_provider.alidns]

@@ -1,4 +1,4 @@
-[cloudflare_speed_test]
+[cloudflare_st]
 result_file = "result.csv"
 
 [dns_provider.alidns]
