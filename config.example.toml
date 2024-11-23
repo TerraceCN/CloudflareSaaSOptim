@@ -1,0 +1,11 @@
+[cloudflare_speed_test]
+result_file = "result.csv"
+
+[dns_provider.alidns]
+access_key_id = "YOUR ALIDNS ACCESS KEY ID"
+access_key_secret = "YOUR ALIDNS ACCESS KEY SECRET"
+
+[[dns]]
+provider = "alidns"
+domain = "example.org"
+line = "default"
