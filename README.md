@@ -4,10 +4,12 @@ Cloudflare 回源优选IP自动更新脚本
 
 ## 用法
 
-1. 自行下载适合本机的[CloudflareSpeedTest](https://github.com/XIU2/CloudflareSpeedTest)并运行;
+建议配合青龙使用
+
+1. 自行下载适合本机的[CloudflareSpeedTest](https://github.com/XIU2/CloudflareSpeedTest)并解压到本项目文件夹内;
 2. 复制`config.example.toml`为`config.toml`;
 3. 修改`config.toml`中的配置;
-4. 运行`run.py`.
+4. 运行`run.sh`(可根据需要修改).
 
 ## 配置
 
